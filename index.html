@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Your HTML head content here -->
+</head>
+<body>
+    <!-- Your website content here -->
+
+    <!-- Dark mode toggle button -->
+    <button id="dark-mode-toggle">Toggle Dark Mode</button>
+
+    <script>
+        // Get the dark mode toggle button and the body element
+        const toggleButton = document.getElementById('dark-mode-toggle');
+        const body = document.body;
+
+        // Check if the user's preference is set to dark mode
+        const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+        // Initialize the dark mode state
+        let isDarkMode = localStorage.getItem('dark-mode') === 'enabled';
+
+        // Function to toggle dark mode
+        function toggleDarkMode() {
+            isDarkMode = !isDarkMode;
+            if (isDarkMode) {
+                body.classList.add('dark-mode');
+                localStorage.setItem('dark-mode', 'enabled');
+            } else {
+                body.classList.remove('dark-mode');
+                localStorage.setItem('dark-mode', 'disabled');
+            }
+        }
+
+        // Set initial dark mode state
+        if (isDarkMode || prefersDarkMode) {
+            body.classList.add('dark-mode');
+        }
+
+        // Add event listener to the toggle button
+        toggleButton.addEventListener('click', toggleDarkMode);
+    </script>
+
+    Hello and welcome to my vebsite.
+</body>
+</html>
